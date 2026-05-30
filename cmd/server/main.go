@@ -1,38 +1,28 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 )
 
-func calculateTotal(amount float64, taxRate float64) float64 {
-	return amount + amount*taxRate
-}
-
-func validateUser(username string) (bool, error) {
-	if username == "" {
-		return false, errors.New("username cannot be empty")
-	}
-	return true, nil
+type Node struct {
+Name string
+IP string
+isActive bool
 }
 
 func main() {
-	var transactionCount uint16 = 500
-	var totalValue float64 = 1250.75
-	var currencyCode string = "USD"
-
-	fmt.Printf("Transactions: %d | Total: %.2f | Currency: %s\n", transactionCount, totalValue, currencyCode)
-
-	total := calculateTotal(100.0, 0.05)
-
-	fmt.Println(total)
-
-	namecheck, err := validateUser("")
-
-	if err != nil {
-		fmt.Println("Error found:", err)
-		return
+	n1 := Node{
+	Name: "Node-Alpha",
+	IP: "192.168.1.1",
+	isActive: true,
+	}
+	
+	n1.isActive = false
+	
+	if n1.isActive {
+		fmt.Printf("Node: %s | Status: %t on IP: %s\n", n1.Name, n1.isActive, n1.IP)
+	} else {
+		fmt.Printf("Node: %s | Status: %t\n", n1.Name, n1.isActive)
 	}
 
-	fmt.Println("Status:", namecheck)
 }
