@@ -1,12 +1,14 @@
 package main
 
-import  ( 
-	"fmt"
-	"network/network.go"
-)
+import  "fmt"
 
 type Reportable interface {
  Report() string 
+}
+
+type Node struct {
+ ID int
+ IP string
 }
 
 type Entry struct {
@@ -18,6 +20,9 @@ func (e Entry) Report() string {
  return fmt.Sprintf("Entry %d has value $[%.2f]", e.ID, e.Value)   
 }
 
+func (n Node) Report() string {
+return fmt.Sprintf("Node %d reachable at %s\n", n.ID, n.IP)
+}
 
 func LogComponent(arg Reportable) {
 fmt.Println(arg.Report())
