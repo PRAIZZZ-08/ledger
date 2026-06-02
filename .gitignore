@@ -31,3 +31,4 @@ go.work.sum
 # .idea/
 # .vscode/
 ledger
+go.work go.sum

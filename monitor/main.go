@@ -2,7 +2,9 @@ package main
 
 import  ( 
 	"fmt"
-	"network/network.go"
+	"monitor/network"
+	
+	"github.com/fatih/color"
 )
 
 type Reportable interface {
@@ -20,12 +22,14 @@ func (e Entry) Report() string {
 
 
 func LogComponent(arg Reportable) {
-fmt.Println(arg.Report())
+rawReport := arg.Report()
+coloredReport := color.GreenString(rawReport)
+fmt.Println(coloredReport)
 }
 
 func main() {
 e1 := Entry{ID: 46, Value: 65}
-n1 := Node{ID: 234, IP: "192.168.0.1"}
+n1 := network.Node{ID: 234, IP: "192.168.0.1"}
 
 LogComponent(e1)
 LogComponent(n1)
